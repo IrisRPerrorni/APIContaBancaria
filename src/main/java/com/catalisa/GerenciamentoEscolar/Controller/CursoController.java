@@ -1,7 +1,7 @@
 package com.catalisa.GerenciamentoEscolar.Controller;
 
 import com.catalisa.GerenciamentoEscolar.dto.CursoDTO;
-import com.catalisa.GerenciamentoEscolar.model.AlunoModel;
+
 import com.catalisa.GerenciamentoEscolar.model.CursoModel;
 import com.catalisa.GerenciamentoEscolar.service.CursoService;
 import org.springframework.beans.BeanUtils;

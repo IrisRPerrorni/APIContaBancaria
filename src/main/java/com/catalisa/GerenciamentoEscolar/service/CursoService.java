@@ -1,12 +1,11 @@
 package com.catalisa.GerenciamentoEscolar.service;
 
-import com.catalisa.GerenciamentoEscolar.dto.CursoDTO;
-import com.catalisa.GerenciamentoEscolar.model.AlunoModel;
+
 import com.catalisa.GerenciamentoEscolar.model.CursoModel;
 import com.catalisa.GerenciamentoEscolar.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 import java.util.Optional;

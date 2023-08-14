@@ -20,11 +20,10 @@ public class MatriculaController {
     MatriculaService matriculaService;
 
     @PostMapping(path = "/escola/matricula")
-    public ResponseEntity<MatriculaModel> cadastroNovaMatricula(@RequestBody MatriculaDTO matriculaDTO) {
-        MatriculaModel matriculaModel = matriculaService.cadastrarMatricula(matriculaDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(matriculaModel);
-
+    public ResponseEntity<Object> cadastrarMatricula(@RequestBody MatriculaDTO matriculaDTO) {
+        return matriculaService.cadastrarMatricula(matriculaDTO);
     }
+
 
     @GetMapping(path = "/escola/matricula")
     public ResponseEntity<List<MatriculaModel>> listarTodaMatricula() {
@@ -51,15 +50,7 @@ public class MatriculaController {
     }
 
 
-//        @DeleteMapping("/escola/matricula/{id}")
-//        public ResponseEntity<String> deletarMatricula(@PathVariable Long id) {
-//            try {
-//                matriculaService.deletarMatricula(id);
-//                return ResponseEntity.ok("Matrícula deletada com sucesso");
-//            } catch (Exception e) {
-//                return ResponseEntity.notFound().build();
-//            }
-//        }
+
 
 
 

@@ -1,5 +1,6 @@
 package com.catalisa.GerenciamentoEscolar.service;
 
+import com.catalisa.GerenciamentoEscolar.dto.CursoDTO;
 import com.catalisa.GerenciamentoEscolar.dto.MatriculaDTO;
 import com.catalisa.GerenciamentoEscolar.model.AlunoModel;
 import com.catalisa.GerenciamentoEscolar.model.CursoModel;
@@ -9,6 +10,8 @@ import com.catalisa.GerenciamentoEscolar.repository.AlunoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.CursoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -28,22 +31,27 @@ public class MatriculaService {
     @Autowired
     CursoRepository cursoRepository;
 
-    public MatriculaModel cadastrarMatricula(MatriculaDTO matriculaDTO) {
+
+    public ResponseEntity<Object> cadastrarMatricula(MatriculaDTO matriculaDTO) {
+        Optional<AlunoModel> alunoOptional = alunoRepository.findById(matriculaDTO.getAluno());
+        Optional<CursoModel> cursoOptional = cursoRepository.findById(matriculaDTO.getCurso());
+
+        if (alunoOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Aluno não encontrado para o ID informado.");
+        }
+        if (cursoOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Curso não encontrado para o ID informado.");
+        }
+
         MatriculaModel matricula = new MatriculaModel();
         matricula.setDataMatricula(matriculaDTO.getDataMatricula());
+        matricula.setCurso(cursoOptional.get());
+        matricula.setAluno(alunoOptional.get());
 
-        if (matriculaDTO.getAluno() != null) {
-            Optional<AlunoModel> alunoid = alunoRepository.findById(matriculaDTO.getAluno());
-            alunoid.ifPresent(matricula::setAluno);
-        }
-
-        if (matriculaDTO.getCurso() != null) {
-            Optional<CursoModel> cursoid = cursoRepository.findById(matriculaDTO.getCurso());
-            cursoid.ifPresent(matricula::setCurso);
-        }
-
-        return matriculaRepository.save(matricula);
+        MatriculaModel matriculaSalva = matriculaRepository.save(matricula);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Matrícula criada com sucesso.");
     }
+
 
 
     public List<MatriculaModel> listarMatricual() {
