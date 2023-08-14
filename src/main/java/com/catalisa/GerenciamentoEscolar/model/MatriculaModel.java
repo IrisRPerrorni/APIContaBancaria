@@ -1,5 +1,6 @@
 package com.catalisa.GerenciamentoEscolar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,10 @@ public class MatriculaModel {
     @OneToOne
     @JoinColumn(name = "curso_id")
     private CursoModel curso;
+//    @OneToOne(mappedBy = "aluno")
+//    @JsonIgnore // ignora a serialização do campo aluno ao converter a classe MatriculaModel para JSON,
+//    // evitando assim a referência circular.
+//    private MatriculaModel matricula;
 
 
 }

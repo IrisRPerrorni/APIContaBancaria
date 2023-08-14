@@ -9,7 +9,6 @@ import com.catalisa.GerenciamentoEscolar.repository.AlunoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.CursoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -61,17 +60,17 @@ public class MatriculaService {
     }
 
     @Transactional
-    public void atualizarCurso(Long id , MatriculaDTO matriculaDTO){
-        MatriculaModel matricula = matriculaRepository.findById(id).orElseThrow(()->
+    public void atualizarCurso(Long id, MatriculaDTO matriculaDTO) {
+        MatriculaModel matricula = matriculaRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Matricula não encontrada"));
 
-        AlunoModel aluno = alunoRepository.findById(matriculaDTO.getAluno()).orElseThrow(()->
+        AlunoModel aluno = alunoRepository.findById(matriculaDTO.getAluno()).orElseThrow(() ->
                 new EntityNotFoundException("Aluno não encontrado"));
 
-        CursoModel curso = cursoRepository.findById(matriculaDTO.getCurso()).orElseThrow(()->
+        CursoModel curso = cursoRepository.findById(matriculaDTO.getCurso()).orElseThrow(() ->
                 new EntityNotFoundException("Curso não encontrado"));
 
-        if (!matricula.getAluno().getId().equals(aluno.getId())){
+        if (!matricula.getAluno().getId().equals(aluno.getId())) {
             throw new IllegalArgumentException("O aluno fornecido não corresponde ao aluno associado à matrícula.");
 
         }
@@ -81,4 +80,16 @@ public class MatriculaService {
         matriculaRepository.save(matricula);
 
     }
+    @Transactional
+    public void deletarMatriculaPorAluno(AlunoModel alunoModel) {
+
+        matriculaRepository.deleteByAluno(alunoModel);
+
+    }
+
+
+
+
 }
+
+
