@@ -25,10 +25,10 @@ public class MatriculaModel {
     @OneToOne
     @JoinColumn(name = "curso_id")
     private CursoModel curso;
-//    @OneToOne(mappedBy = "aluno")
-//    @JsonIgnore // ignora a serialização do campo aluno ao converter a classe MatriculaModel para JSON,
-//    // evitando assim a referência circular.
-//    private MatriculaModel matricula;
 
-
+    public MatriculaModel(String dataMatricula, AlunoModel aluno, CursoModel curso) {
+        this.dataMatricula = dataMatricula;
+        this.aluno = aluno;
+        this.curso = curso;
+    }
 }

@@ -1,5 +1,6 @@
 package com.catalisa.GerenciamentoEscolar.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class AlunoModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,4 +25,12 @@ public class AlunoModel implements Serializable {
     private int idade;
     @Column(nullable = false)
     private String email;
+
+
+    public AlunoModel(String nomeAluno, int idade, String email) {
+        this.nomeAluno = nomeAluno;
+        this.idade = idade;
+        this.email = email;
+    }
+
 }

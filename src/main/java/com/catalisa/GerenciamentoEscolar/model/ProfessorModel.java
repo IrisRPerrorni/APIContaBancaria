@@ -21,9 +21,13 @@ public class ProfessorModel {
     private int idade;
     @ManyToOne
     @JoinColumn(name = "curso_id" )
-    private CursoModel cursos;;
+    private CursoModel cursos;
     private double salario;
 
-
-
+    public ProfessorModel(String nome, int idade, CursoModel cursos, double salario) {
+        this.nome = nome;
+        this.idade = idade;
+        this.cursos = cursos;
+        this.salario = salario;
+    }
 }

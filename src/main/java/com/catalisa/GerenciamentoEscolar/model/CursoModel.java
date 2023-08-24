@@ -1,5 +1,6 @@
 package com.catalisa.GerenciamentoEscolar.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
 @Table(name = "cursos")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CursoModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -21,6 +23,10 @@ public class CursoModel implements Serializable {
     @Column(nullable = false)
     private int cargaHoraria;
 
+    public CursoModel(String nomeCurso, int cargaHoraria) {
+        this.nomeCurso = nomeCurso;
+        this.cargaHoraria = cargaHoraria;
+    }
 }
 
 

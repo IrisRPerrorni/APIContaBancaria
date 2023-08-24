@@ -46,7 +46,7 @@ public class MatriculaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("matricula não encontrado");
         }
         matriculaService.deletarMatricula(matriculaOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Curso deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).body("Matricula deletado com sucesso");
     }
 
 

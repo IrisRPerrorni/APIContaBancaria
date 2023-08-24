@@ -5,7 +5,6 @@ import com.catalisa.GerenciamentoEscolar.dto.MatriculaDTO;
 import com.catalisa.GerenciamentoEscolar.model.AlunoModel;
 import com.catalisa.GerenciamentoEscolar.model.CursoModel;
 import com.catalisa.GerenciamentoEscolar.model.MatriculaModel;
-import com.catalisa.GerenciamentoEscolar.model.ProfessorModel;
 import com.catalisa.GerenciamentoEscolar.repository.AlunoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.CursoRepository;
 import com.catalisa.GerenciamentoEscolar.repository.MatriculaRepository;

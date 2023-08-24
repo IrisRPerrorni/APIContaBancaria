@@ -15,4 +15,7 @@ public class ProfessorDTO {
     private int idade;
     private double salario;
     private Long  cursos;
+
+
+
 }
