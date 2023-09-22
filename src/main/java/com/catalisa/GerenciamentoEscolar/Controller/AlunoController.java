@@ -26,6 +26,7 @@ public class AlunoController {
     MatriculaService matriculaService;
 
     @PostMapping(path = "/escola/aluno")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<AlunoModel> cadastrarAlunoNovo(@RequestBody AlunoDTO alunoDTO) {
         AlunoModel alunoModel = new AlunoModel();
         BeanUtils.copyProperties(alunoDTO, alunoModel);
@@ -35,6 +36,7 @@ public class AlunoController {
 
 
     @GetMapping(path = "/escola/aluno")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<List<AlunoModel>> exibirListaDeAluno() {
         return ResponseEntity.status(HttpStatus.OK).body(alunoService.listarAlunos());
     }

@@ -20,12 +20,14 @@ public class ProfessorController {
 
     //post
     @PostMapping(path ="/escola/professor")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<ProfessorModel> cadastrarProfessorNovo(@RequestBody ProfessorDTO professorDTO) {
         ProfessorModel professor = professorService.cadastrarProfessor(professorDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(professor);
     }
 
     @GetMapping(path ="/escola/professor")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<List<ProfessorModel>> listarTodosProfessores() {
         List<ProfessorModel> professores = professorService.listarProfessor();
         return ResponseEntity.ok(professores);

@@ -21,6 +21,7 @@ public class CursoController {
 
 
     @PostMapping(path = "/escola/curso")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<Object> cadastrarCursoNovo(@RequestBody CursoDTO cursoDTO) {
         CursoModel cursoModel = new CursoModel();
         BeanUtils.copyProperties(cursoDTO, cursoModel);
@@ -31,6 +32,7 @@ public class CursoController {
 
 
     @GetMapping(path = "/escola/curso")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<List<CursoModel>> exibirListaDeCursos() {
         return ResponseEntity.status(HttpStatus.OK).body(cursoService.listarCursos());
     }
